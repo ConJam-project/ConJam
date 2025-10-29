@@ -11,6 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.km.feature.home.RouteHome
+import com.km.feature.main.MainNavigator
+import com.km.feature.main.MainScreen
+import com.km.feature.main.rememberMainNavigator
 import com.km.feature.ui.theme.ConJamTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,30 +22,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navigator: MainNavigator = rememberMainNavigator()
+
             ConJamTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen(
+                    navigator = navigator,
+                    onTabSelected = { tab -> navigator.navigate(tab) }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ConJamTheme {
-        Greeting("Android")
     }
 }
