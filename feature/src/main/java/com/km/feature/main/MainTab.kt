@@ -1,16 +1,13 @@
 package com.km.feature.main
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.km.feature.R
 import com.km.feature.bookmark.RouteBookmark
 import com.km.feature.calendar.RouteCalendar
 import com.km.feature.home.RouteHome
