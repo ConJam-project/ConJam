@@ -1,3 +1,8 @@
+---
+description: ConJam project context and guidelines
+alwaysApply: true
+---
+
 # ConJam Project Rules
 
 ## Project Overview
@@ -38,10 +43,10 @@ KOPIS(공연예술통합전산망) OpenAPI를 데이터 소스로 사용합니�
 
 ## Design System
 - **Theme**: Light theme (밝은 배경)
-- **Primary Color**: #8BB9F0 (옅은 블루)
-- **Background**: #F5F9FF (밝은 블루 화이트)
-- **Surface**: #FFFFFF (화이트)
-- **Icon Color**: #9AA0A6 (그레이)
+- **Primary Color**: 옅은 블루 (#8BB9F0)
+- **Background**: 밝은 블루 화이트 (#F5F9FF)
+- **Surface**: 화이트 (#FFFFFF)
+- **Icon Color**: 그레이 (#9AA0A6)
 - **Button**: 흰색 배경 + Primary text color
 - **Card-based layout**: 포스터 이미지 강조
 

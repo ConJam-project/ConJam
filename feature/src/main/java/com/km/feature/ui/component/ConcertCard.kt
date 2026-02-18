@@ -116,7 +116,7 @@ fun ConcertCard(
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFF121212)
+@Preview(showBackground = true, backgroundColor = 0xFFF5F9FF)
 @Composable
 private fun ConcertCardPreview() {
     ConJamTheme {

@@ -1,6 +1,5 @@
 package com.km.feature.main
 
-import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -104,7 +103,7 @@ private fun RowScope.MainBottomBarItem(
 }
 
 @Composable
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
 private fun MainBottomBarPreview() {
     ConJamTheme {
         MainBottomBar(
