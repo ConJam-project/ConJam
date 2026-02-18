@@ -8,7 +8,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.km.feature.bookmark.RouteBookmark
 import com.km.feature.calendar.RouteCalendar
 import com.km.feature.detail.RouteDetail
 import com.km.feature.home.RouteHome
@@ -46,7 +45,6 @@ class MainNavigator(
             RouteHome -> navigateHome(navOptions)
             RouteSearch -> navigateSearch(navOptions)
             RouteCalendar -> navigateCalendar(navOptions)
-            RouteBookmark -> navigateBookmark(navOptions)
             RouteSetting -> navigateSetting(navOptions)
         }
     }
@@ -61,10 +59,6 @@ class MainNavigator(
 
     private fun navigateCalendar(navOptions: NavOptions? = null) {
         navController.navigate(RouteCalendar, navOptions)
-    }
-
-    private fun navigateBookmark(navOptions: NavOptions? = null) {
-        navController.navigate(RouteBookmark, navOptions)
     }
 
     private fun navigateSetting(navOptions: NavOptions? = null) {

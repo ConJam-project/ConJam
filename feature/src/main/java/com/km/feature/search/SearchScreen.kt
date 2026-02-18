@@ -65,6 +65,9 @@ fun SearchRoute(
         onGenreSelect = viewModel::onGenreSelect,
         onRegionSelect = viewModel::onRegionSelect,
         onStatusSelect = viewModel::onStatusSelect,
+        onSortSelect = viewModel::onSortSelect,
+        onBookmarkToggle = viewModel::onBookmarkToggle,
+        onRegionGroupSelect = viewModel::onRegionGroupSelect,
         onConcertClick = onConcertClick,
     )
 }
@@ -77,6 +80,9 @@ private fun SearchScreen(
     onGenreSelect: (String) -> Unit = {},
     onRegionSelect: (String) -> Unit = {},
     onStatusSelect: (String) -> Unit = {},
+    onSortSelect: (SearchSort) -> Unit = {},
+    onBookmarkToggle: () -> Unit = {},
+    onRegionGroupSelect: (String) -> Unit = {},
     onConcertClick: (String) -> Unit = {},
 ) {
     Column(
@@ -97,7 +103,27 @@ private fun SearchScreen(
             onGenreSelect = onGenreSelect,
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Sort Filter Row
+        SortFilterRow(
+            options = SearchViewModel.SORTS,
+            selected = state.selectedSort,
+            onSelect = onSortSelect,
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Interest & Region Group Filter Row
+        InterestRegionFilterRow(
+            onlyBookmarked = state.onlyBookmarked,
+            regionGroups = SearchViewModel.REGION_GROUPS,
+            selectedRegionGroup = state.selectedRegionGroup,
+            onBookmarkToggle = onBookmarkToggle,
+            onRegionGroupSelect = onRegionGroupSelect,
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Dropdown Filters
         Row(
@@ -202,31 +228,94 @@ private fun GenreFilterRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         genres.forEach { genre ->
-            val isSelected = genre == selectedGenre
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(20.dp))
-                    .then(
-                        if (isSelected) {
-                            Modifier.background(Primary)
-                        } else {
-                            Modifier.border(1.dp, TextTertiary, RoundedCornerShape(20.dp))
-                        }
-                    )
-                    .clickable { onGenreSelect(genre) }
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Text(
-                    text = genre,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = if (isSelected) {
-                        MaterialTheme.colorScheme.onPrimary
-                    } else {
-                        TextSecondary
-                    },
-                )
-            }
+            FilterChip(
+                label = genre,
+                selected = genre == selectedGenre,
+                onClick = { onGenreSelect(genre) },
+            )
         }
+    }
+}
+
+@Composable
+private fun SortFilterRow(
+    options: List<SearchSort>,
+    selected: SearchSort,
+    onSelect: (SearchSort) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        options.forEach { option ->
+            FilterChip(
+                label = option.label,
+                selected = option == selected,
+                onClick = { onSelect(option) },
+            )
+        }
+    }
+}
+
+@Composable
+private fun InterestRegionFilterRow(
+    onlyBookmarked: Boolean,
+    regionGroups: List<String>,
+    selectedRegionGroup: String,
+    onBookmarkToggle: () -> Unit,
+    onRegionGroupSelect: (String) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        FilterChip(
+            label = "관심 목록",
+            selected = onlyBookmarked,
+            onClick = onBookmarkToggle,
+        )
+        regionGroups.forEach { group ->
+            FilterChip(
+                label = group,
+                selected = group == selectedRegionGroup,
+                onClick = { onRegionGroupSelect(group) },
+            )
+        }
+    }
+}
+
+@Composable
+private fun FilterChip(
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(20.dp))
+            .then(
+                if (selected) {
+                    Modifier.background(Primary)
+                } else {
+                    Modifier.border(1.dp, TextTertiary, RoundedCornerShape(20.dp))
+                }
+            )
+            .clickable { onClick() }
+            .padding(horizontal = 14.dp, vertical = 8.dp),
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelLarge,
+            color = if (selected) {
+                MaterialTheme.colorScheme.onPrimary
+            } else {
+                TextSecondary
+            },
+        )
     }
 }
 
@@ -277,7 +366,7 @@ private fun FilterDropdown(
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFF121212)
+@Preview(showBackground = true, backgroundColor = 0xFFF5F9FF)
 @Composable
 private fun SearchScreenPreview() {
     ConJamTheme {

@@ -2,13 +2,11 @@ package com.km.feature.main
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.km.feature.bookmark.RouteBookmark
 import com.km.feature.calendar.RouteCalendar
 import com.km.feature.home.RouteHome
 import com.km.feature.search.RouteSearch
@@ -37,12 +35,6 @@ enum class MainTab(
         route = RouteCalendar,
         title = "Calendar",
         contentDescription = "Calendar"
-    ),
-    BOOKMARK(
-        icon = Icons.Default.Favorite,
-        route = RouteBookmark,
-        title = "Bookmark",
-        contentDescription = "Bookmark"
     ),
     SETTING(
         icon = Icons.Default.Settings,

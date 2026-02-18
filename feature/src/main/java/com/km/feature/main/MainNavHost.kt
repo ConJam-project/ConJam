@@ -8,7 +8,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import com.km.feature.bookmark.bookmarkNavGraph
 import com.km.feature.calendar.calendarNavGraph
 import com.km.feature.detail.detailNavGraph
 import com.km.feature.home.homeNavGraph
@@ -39,7 +38,6 @@ fun MainNavHost(
                 onConcertClick = { concertId -> navigator.navigateToDetail(concertId) },
             )
             calendarNavGraph(padding = padding)
-            bookmarkNavGraph(padding = padding)
             settingNavGraph(padding = padding)
             detailNavGraph(
                 onBackClick = { navigator.navController.popBackStack() },
