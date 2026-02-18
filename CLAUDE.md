@@ -23,6 +23,11 @@ KOPIS(공연예술통합전산망) OpenAPI를 데이터 소스로 사용합니�
 - PR 제목 형식: `Feature : #<이슈번호> XX 기능 개발` (예: `Feature : #8 디자인 시스템 + Home 화면 개발`)
 - PR 대상 브랜치: `develop`
 
+### Merge Convention
+- **Squash Merge** 방식으로 머지합니다.
+- 머지 커밋 메시지는 **PR 제목**을 그대로 사용합니다.
+- 머지 완료 후 해당 feature 브랜치는 **원격/로컬 모두 삭제**합니다.
+
 ## Tech Stack
 - **Android**: Kotlin, Jetpack Compose, Material3
 - **Architecture**: MVVM, Navigation Compose, StateFlow
