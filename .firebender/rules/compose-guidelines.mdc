@@ -1,0 +1,21 @@
+---
+description: Jetpack Compose UI guidelines for ConJam
+globs: "*.kt"
+---
+
+# Compose UI Guidelines
+
+## Theme Usage
+- 모든 Composable은 ConJamTheme 안에서 렌더링합니다.
+- 직접 Color 값 사용 대신 MaterialTheme.colorScheme 사용을 권장합니다.
+- Primary: 옅은 블루, Background: 밝은 블루 화이트 계열
+
+## State Management
+- UI 상태는 StateFlow를 사용하여 ViewModel에서 관리합니다.
+- collectAsStateWithLifecycle()로 안전하게 수집합니다.
+- State hoisting 패턴을 따릅니다.
+
+## Component Structure
+- Preview 함수를 반드시 작성합니다 (@Preview 어노테이션).
+- Route -> Screen -> Content 구조를 따릅니다.
+- ImmutableList를 사용하여 불필요한 리컴포지션을 방지합니다.

@@ -3,44 +3,50 @@ package com.km.feature.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Primary
-val Primary = Color(0xFF7B61FF)
-val PrimaryLight = Color(0xFFA78BFA)
-val PrimaryDark = Color(0xFF5B3FD9)
+val Primary = Color(0xFF8BB9F0)
+val PrimaryLight = Color(0xFFB9D7F7)
+val PrimaryDark = Color(0xFF5C8EC6)
 
 // Background & Surface
-val BackgroundDark = Color(0xFF121212)
-val SurfaceDark = Color(0xFF1E1E1E)
-val SurfaceVariantDark = Color(0xFF2A2A2A)
-val CardDark = Color(0xFF252525)
+val BackgroundLight = Color(0xFFF5F9FF)
+val SurfaceLight = Color(0xFFFFFFFF)
+val SurfaceVariantLight = Color(0xFFE8F1FF)
+val CardLight = Color(0xFFFFFFFF)
 
 // Text
-val TextPrimary = Color(0xFFFFFFFF)
-val TextSecondary = Color(0xFFB3B3B3)
-val TextTertiary = Color(0xFF757575)
+val TextPrimary = Color(0xFF1C1E21)
+val TextSecondary = Color(0xFF5F6368)
+val TextTertiary = Color(0xFF8A8D91)
+
+// Icon
+val IconDefault = Color(0xFF9AA0A6)
+val IconSelected = Primary
+
+// Divider & Border
+val DividerColor = Color(0xFFE3E9F2)
+val BorderColor = Color(0xFFD5DEEA)
 
 // Accent
-val AccentRed = Color(0xFFFF6B6B)
+val AccentRed = Color(0xFFE85D5D)
 val AccentGreen = Color(0xFF4CAF50)
-val AccentOrange = Color(0xFFFF9800)
-val AccentBlue = Color(0xFF42A5F5)
+val AccentOrange = Color(0xFFF5A623)
+val AccentBlue = Primary
 
 // Genre colors
-val GenreConcert = Color(0xFFFF6B6B)
-val GenreMusical = Color(0xFFFFD93D)
-val GenrePlay = Color(0xFF6BCB77)
-val GenreClassic = Color(0xFF4D96FF)
-val GenreOpera = Color(0xFFFF6BD6)
-val GenreDance = Color(0xFFFF9F45)
+val GenreConcert = Color(0xFFE85D5D)
+val GenreMusical = Color(0xFFE8A317)
+val GenrePlay = Color(0xFF4CAF50)
+val GenreClassic = Color(0xFF8BB9F0)
+val GenreOpera = Color(0xFFCE5DA8)
+val GenreDance = Color(0xFFF5A623)
 
 // State colors
-val StateUpcoming = Color(0xFF42A5F5)
+val StateUpcoming = Primary
 val StateOngoing = Color(0xFF4CAF50)
-val StateCompleted = Color(0xFF757575)
+val StateCompleted = Color(0xFF999999)
 
-// Legacy (keep for compatibility)
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Aliases for backward compatibility (previously dark-theme colors)
+val BackgroundDark = BackgroundLight
+val SurfaceDark = SurfaceLight
+val SurfaceVariantDark = SurfaceVariantLight
+val CardDark = CardLight

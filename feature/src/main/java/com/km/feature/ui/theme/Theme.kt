@@ -1,23 +1,23 @@
 package com.km.feature.ui.theme
 
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-private val ConJamColorScheme = darkColorScheme(
+private val ConJamColorScheme = lightColorScheme(
     primary = Primary,
-    onPrimary = TextPrimary,
-    primaryContainer = PrimaryDark,
+    onPrimary = BackgroundLight,
+    primaryContainer = PrimaryLight,
     onPrimaryContainer = TextPrimary,
     secondary = PrimaryLight,
-    onSecondary = BackgroundDark,
-    background = BackgroundDark,
+    onSecondary = TextPrimary,
+    background = BackgroundLight,
     onBackground = TextPrimary,
-    surface = SurfaceDark,
+    surface = SurfaceLight,
     onSurface = TextPrimary,
-    surfaceVariant = SurfaceVariantDark,
+    surfaceVariant = SurfaceVariantLight,
     onSurfaceVariant = TextSecondary,
-    outline = TextTertiary,
+    outline = BorderColor,
     error = AccentRed,
 )
 

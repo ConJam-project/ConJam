@@ -22,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -67,10 +69,10 @@ fun FeaturedBanner(
                         .align(Alignment.BottomStart)
                         .fillMaxWidth()
                         .background(
-                            brush = androidx.compose.ui.graphics.Brush.verticalGradient(
+                            brush = Brush.verticalGradient(
                                 colors = listOf(
-                                    androidx.compose.ui.graphics.Color.Transparent,
-                                    androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.8f),
+                                    Color.Transparent,
+                                    Color.Black.copy(alpha = 0.6f),
                                 ),
                             ),
                         )
@@ -118,7 +120,7 @@ fun FeaturedBanner(
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFF121212)
+@Preview(showBackground = true, backgroundColor = 0xFFF5F9FF)
 @Composable
 private fun FeaturedBannerPreview() {
     ConJamTheme {
