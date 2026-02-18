@@ -10,6 +10,10 @@ data class Concert(
     val genre: String = "",
     val state: ConcertState = ConcertState.UPCOMING,
     val isOpenRun: Boolean = false,
+    val isBookmarked: Boolean = false,
+    val popularityScore: Int = 0,
+    val distanceKm: Double = 0.0,
+    val regionGroup: RegionGroup = RegionGroup.KOREA,
 )
 
 enum class ConcertState(val label: String) {
@@ -25,4 +29,10 @@ enum class Genre(val label: String) {
     CLASSIC("클래식"),
     OPERA("오페라"),
     DANCE("무용"),
+}
+
+enum class RegionGroup(val label: String) {
+    KOREA("한국"),
+    JAPAN("일본"),
+    WESTERN("서양"),
 }
