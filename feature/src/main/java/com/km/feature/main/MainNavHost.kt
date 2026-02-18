@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.km.feature.bookmark.bookmarkNavGraph
 import com.km.feature.calendar.calendarNavGraph
+import com.km.feature.detail.detailNavGraph
 import com.km.feature.home.homeNavGraph
 import com.km.feature.search.searchNavGraph
 import com.km.feature.setting.settingNavGraph
@@ -29,11 +30,20 @@ fun MainNavHost(
             navController = navigator.navController,
             startDestination = navigator.startDestination,
         ) {
-            homeNavGraph(padding = padding)
-            searchNavGraph(padding = padding)
+            homeNavGraph(
+                padding = padding,
+                onConcertClick = { concertId -> navigator.navigateToDetail(concertId) },
+            )
+            searchNavGraph(
+                padding = padding,
+                onConcertClick = { concertId -> navigator.navigateToDetail(concertId) },
+            )
             calendarNavGraph(padding = padding)
             bookmarkNavGraph(padding = padding)
             settingNavGraph(padding = padding)
+            detailNavGraph(
+                onBackClick = { navigator.navController.popBackStack() },
+            )
         }
     }
 }

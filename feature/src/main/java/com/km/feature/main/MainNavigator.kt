@@ -10,6 +10,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.km.feature.bookmark.RouteBookmark
 import com.km.feature.calendar.RouteCalendar
+import com.km.feature.detail.RouteDetail
 import com.km.feature.home.RouteHome
 import com.km.feature.search.RouteSearch
 import com.km.feature.setting.RouteSetting
@@ -68,6 +69,10 @@ class MainNavigator(
 
     private fun navigateSetting(navOptions: NavOptions? = null) {
         navController.navigate(RouteSetting, navOptions)
+    }
+
+    fun navigateToDetail(concertId: String) {
+        navController.navigate(RouteDetail(concertId = concertId))
     }
 }
 
