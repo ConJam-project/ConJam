@@ -41,6 +41,7 @@ import com.km.feature.ui.theme.TextSecondary
 fun HomeRoute(
     viewModel: HomeViewModel = viewModel(),
     padding: PaddingValues,
+    onConcertClick: (String) -> Unit = {},
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -49,6 +50,7 @@ fun HomeRoute(
             .padding(padding)
             .fillMaxSize(),
         state = state,
+        onConcertClick = onConcertClick,
     )
 }
 
@@ -56,6 +58,7 @@ fun HomeRoute(
 private fun HomeScreen(
     modifier: Modifier = Modifier,
     state: HomeState,
+    onConcertClick: (String) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier
@@ -71,6 +74,7 @@ private fun HomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
             FeaturedBanner(
                 concerts = state.featuredConcerts,
+                onConcertClick = { concert -> onConcertClick(concert.id) },
             )
         }
 
@@ -89,7 +93,10 @@ private fun HomeScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(state.ticketOpenSoonConcerts, key = { it.id }) { concert ->
-                    ConcertSmallCard(concert = concert)
+                    ConcertSmallCard(
+                        concert = concert,
+                        onClick = { onConcertClick(concert.id) },
+                    )
                 }
             }
         }
@@ -107,6 +114,7 @@ private fun HomeScreen(
             ConcertCard(
                 concert = concert,
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp),
+                onClick = { onConcertClick(concert.id) },
             )
         }
 

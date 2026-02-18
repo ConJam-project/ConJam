@@ -6,8 +6,12 @@ import androidx.navigation.compose.composable
 
 fun NavGraphBuilder.searchNavGraph(
     padding: PaddingValues = PaddingValues(),
+    onConcertClick: (String) -> Unit = {},
 ) {
     composable<RouteSearch> {
-        SearchRoute(padding = padding)
+        SearchRoute(
+            padding = padding,
+            onConcertClick = onConcertClick,
+        )
     }
 }

@@ -6,8 +6,12 @@ import androidx.navigation.compose.composable
 
 fun NavGraphBuilder.homeNavGraph(
     padding: PaddingValues = PaddingValues(),
+    onConcertClick: (String) -> Unit = {},
 ) {
     composable<RouteHome> {
-        HomeRoute(padding = padding)
+        HomeRoute(
+            padding = padding,
+            onConcertClick = onConcertClick,
+        )
     }
 }
