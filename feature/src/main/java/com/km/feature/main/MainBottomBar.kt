@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,9 +23,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.km.feature.ui.theme.ConJamTheme
+import com.km.feature.ui.theme.Primary
+import com.km.feature.ui.theme.SurfaceDark
+import com.km.feature.ui.theme.TextSecondary
+import com.km.feature.ui.theme.TextTertiary
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toPersistentList
 
@@ -41,7 +47,8 @@ fun MainBottomBar(
             modifier = modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .background(color = Color.White),
+                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .background(color = SurfaceDark),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             tabs.forEach { tab ->
@@ -76,23 +83,19 @@ private fun RowScope.MainBottomBarItem(
         contentAlignment = Alignment.Center,
     ) {
         Column(
-            horizontalAlignment =Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Icon(
                 imageVector = tab.icon,
                 contentDescription = tab.contentDescription,
-                tint = if (selected) {
-                    Color.Blue
-                } else {
-                    MaterialTheme.colorScheme.outline
-                },
-                modifier = Modifier.size(34.dp),
+                tint = if (selected) Primary else TextTertiary,
+                modifier = Modifier.size(24.dp),
             )
 
-            Spacer(Modifier.height(6.dp))
+            Spacer(Modifier.height(4.dp))
             Text(
                 style = MaterialTheme.typography.labelSmall.copy(
-                    color = if (selected) Color.Black else Color.Gray
+                    color = if (selected) Primary else TextSecondary,
                 ),
                 text = tab.title,
             )
@@ -101,12 +104,14 @@ private fun RowScope.MainBottomBarItem(
 }
 
 @Composable
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun MainBottomBarPreview() {
-    MainBottomBar(
-        visible = true,
-        tabs = MainTab.entries.toPersistentList(),
-        currentTab = MainTab.HOME,
-        onTabSelected = { },
-    )
+    ConJamTheme {
+        MainBottomBar(
+            visible = true,
+            tabs = MainTab.entries.toPersistentList(),
+            currentTab = MainTab.HOME,
+            onTabSelected = { },
+        )
+    }
 }
